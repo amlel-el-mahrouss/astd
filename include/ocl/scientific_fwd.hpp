@@ -17,6 +17,8 @@
 namespace ocl::scientific
 {
 
+    /// @brief Type alias for a quaternion with float components.
+    /// @details This alias simplifies the usage of quaternions with float precision.
 	using quaternionf = ::boost::math::quaternion<float>;
 	using quaterniond = ::boost::math::quaternion<double>;
 

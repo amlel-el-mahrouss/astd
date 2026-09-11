@@ -1,0 +1,3 @@
+[submodule "vendor/asl"]
+	path = vendor/asl
+	url = https://github.com/stlab/adobe_source_libraries.git
