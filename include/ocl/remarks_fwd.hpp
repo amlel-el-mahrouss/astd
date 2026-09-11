@@ -51,14 +51,14 @@ namespace ocl::remarks
     /// @brief Is the manifest valid?
 	inline bool remarks_manifest_is_valid(const remarks_manifest_hdr& hdr)
 	{
-		return hdr.llm_magic_ == OCL_REMARKS_MAGIC && hdr.llm_version_ == OCL_REMARKS_VERSION;
+		return hdr.magic_ == OCL_REMARKS_MAGIC && hdr.version_ == OCL_REMARKS_VERSION;
 	}
 
     /// @brief Does the vendor id matches the vendor we expect?
     template <int32_t V>
     inline bool remarks_manifest_is_llm_vendor(const remarks_manifest_hdr& hdr)
     {
-        return hdr.llm_vendor_id_ == V;
+        return hdr.vendor_id_ == V;
     }
 
 } // namespace ocl::remarks

@@ -33,30 +33,30 @@ namespace ocl
 		}
 	} // namespace detail
 
-	class option final
+	class basic_option final
 	{
 	public:
-		option() = delete;
+		basic_option() = delete;
 		
-		explicit option(const return_type& return_type)
+		explicit basic_option(const return_type& return_type)
 			: ret_(return_type)
 		{
 			if (ret_ == return_type::invalid)
 				detail::throw_option_invalid_type_error();
 		}
 
-		~option() = default;
+		~basic_option() = default;
 
-		option& operator=(const option&) = default;
-		option(const option&)			 = default;
+		basic_option& operator=(const basic_option&) = default;
+		basic_option(const basic_option&)			 = default;
 
-		option& expect(const char* input)
+		basic_option& expect(const char* input)
 		{
 			assert(ret_ != return_type::invalid);
 
 			if (ret_ == return_type::err)
 			{
-				io::println(input ? input : "option::error");
+				io::println(input ? input : "basic_option::error");
 				detail::throw_option_invalid_type_error();
 			}
 
@@ -64,14 +64,14 @@ namespace ocl
 		}
 
 		template <typename Handleable>
-		option& expect(const char* input)
+		basic_option& expect(const char* input)
 		{
 			assert(ret_ != return_type::invalid);
 
 			if (ret_ == return_type::err)
 			{
 				// AMLALE: Shall it be a functor or container here?
-				Handleable{}(input ? input : "option::error");
+				Handleable{}(input ? input : "basic_option::error");
 			}
 
 			return *this;
@@ -152,6 +152,8 @@ namespace ocl
 	{
 		return return_type::invalid;
 	}
+
+    using option = basic_option;
 
 } // namespace ocl
 
